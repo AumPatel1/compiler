@@ -1,0 +1,32 @@
+# Procedure to show menu
+print_menu <- function() {
+    cat("--- MENU DEMO ---\n")
+    cat("| 1. Option 1   |\n")
+    cat("| 2. Option 2   |\n")
+    cat("| 3. Option 3   |\n")
+    cat("-----------------\n")
+}
+
+# Procedure to repeat menu
+runMenu <- function() {
+	isRunning <- TRUE
+    while (isRunning) {
+        print_menu()
+        choice <- readline("Enter your choice (q to quit): ")
+        if (tolower(choice) == "q") {
+            break
+        } else if (choice == "1") {
+            cat("Executing Option 1\n")
+        } else if (choice == "2") {
+            cat("Executing Option 2\n")
+        } else if (choice == "3") {
+            cat("Executing Option 3\n")
+        } else {
+            isRunning <- FALSE
+			print("Quiting")
+        }
+    }
+}
+
+# Main execution
+runMenu()

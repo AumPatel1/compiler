@@ -1,0 +1,14 @@
+
+main <- function() {
+    data <- readline(prompt = "Enter a number: ")
+    val <- as.integer(data)
+    if (is.na(val)) {
+		val <- 10
+		print(val)
+        factorial <- fact(val)
+        cat("The factorial of", val, "is", factorial, "\n")
+    }
+}
+
+
+

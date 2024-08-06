@@ -1,0 +1,8 @@
+
+cat("Hello, world!\n")
+
+sayHello <- function(){
+ 
+}
+
+sayHello()

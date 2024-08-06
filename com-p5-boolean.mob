@@ -1,0 +1,98 @@
+# Constants
+my_true <- 1
+my_false <- 0
+
+# Function for Calls
+call_func <- function(f, x, y) {
+  f(x, y)
+}
+call_default <- function(f) {
+  call_func(f, my_true, my_false)
+}
+
+# Functions for Constants
+my_true_func <- function(x, y) {
+  x
+}
+my_false_func <- function(x, y) {
+  y
+}
+
+# Unary function
+NOT <- function(x) {
+  call_func(x, my_false, my_true)
+}
+
+# Binary functions
+AND <- function(x, y) {
+  call_func(x, call_default(y), call_default(my_false_func))
+}
+
+OR <- function(x, y) {
+  call_func(x, call_default(my_true_func), call_default(y))
+}
+
+XOR <- function(x, y) {
+  call_func(x, call_func(y, call_default(my_false_func), call_default(my_true_func)), call_default(y))
+}
+
+IMP <- function(x, y) {
+  call_func(x, call_default(y), call_default(my_true_func))
+}
+
+# Test code
+boolean <- function() {
+  # Constants (T/F)
+  t <- my_true_func
+  T <- call_default(t)
+  cat("TRUE:", T, "\n")
+  f <- my_false_func
+  F <- call_default(f)
+  cat("FALSE:", F, "\n")
+  # Not
+  n <- NOT(t)
+  cat("NOT TRUE:", n, "\n")
+  n <- NOT(f)
+  cat("NOT FALSE:", n, "\n")
+  # And
+  a <- AND(t, t)
+  cat("TRUE AND TRUE:", a, "\n")
+  a <- AND(t, f)
+  cat("TRUE AND FALSE:", a, "\n")
+  a <- AND(f, t)
+  cat("FALSE AND TRUE:", a, "\n")
+  a <- AND(f, f)
+  cat("FALSE AND FALSE:", a, "\n")
+  # Or
+  o <- OR(t, t)
+  cat("TRUE OR TRUE:", o, "\n")
+  o <- OR(t, f)
+  cat("TRUE OR FALSE:", o, "\n")
+  o <- OR(f, t)
+  cat("FALSE OR TRUE:", o, "\n")
+  o <- OR(f, f)
+  cat("FALSE OR FALSE:", o, "\n")
+  # Xor
+  x <- XOR(t, t)
+  cat("TRUE XOR TRUE:", x, "\n")
+  x <- XOR(t, f)
+  cat("TRUE XOR FALSE:", x, "\n")
+  x <- XOR(f, t)
+  cat("FALSE XOR TRUE:", x, "\n")
+  x <- XOR(f, f)
+  cat("FALSE XOR FALSE:", x, "\n")
+  # Imp
+  i <- IMP(t, t)
+  cat("TRUE IMP TRUE:", i, "\n")
+  i <- IMP(t, f)
+  cat("TRUE IMP FALSE:", i, "\n")
+  i <- IMP(f, t)
+  cat("FALSE IMP TRUE:", i, "\n")
+  i <- IMP(f, f)
+  cat("FALSE IMP FALSE:", i, "\n")
+  return(invisible())
+}
+
+# Run the test code
+boolean()
+

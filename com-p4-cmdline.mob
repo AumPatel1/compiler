@@ -1,0 +1,8 @@
+# Get all command line parameters
+command_line_args <- commandArgs(trailingOnly = TRUE)
+
+# Print all command line parameters
+cat("Command line parameters:\n")
+for (arg in command_line_args) {
+  cat(arg, "\n")
+}
